@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	fmt.Println(numWays(4, []int{1, 2}))
+	fmt.Println(numWays(50, []int{1, 2, 5}))
 }
 
 func numWays(n int, x []int) int {
