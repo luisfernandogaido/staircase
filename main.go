@@ -9,20 +9,20 @@ func main() {
 }
 
 func numWays(n int, x []int) int {
-	return sobe(n, x, 0)
+	return up(n, x, 0)
 }
 
-func sobe(n int, x []int, degrau int) int {
-	solucoes := 0
-	for _, passos := range x {
-		if degrau+passos == n {
-			solucoes++
+func up(n int, x []int, level int) int {
+	solutions := 0
+	for _, steps := range x {
+		if level+steps == n {
+			solutions++
 			continue
 		}
-		if degrau+passos < n {
-			solucoes += sobe(n, x, degrau+passos)
+		if level+steps < n {
+			solutions += up(n, x, level+steps)
 			continue
 		}
 	}
-	return solucoes
+	return solutions
 }
