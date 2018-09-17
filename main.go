@@ -5,7 +5,20 @@ import (
 )
 
 func main() {
-	fmt.Println(numWays(50, []int{1, 2, 5}))
+
+	n := 5
+	jumpsAllowed := []int{1, 3, 5}
+
+	//numWays is the original solution od the problem, wich returns only the number of ways to reach the top.
+	numSolutions := numWays(n, jumpsAllowed)
+	fmt.Printf("number of solutions: %v\n", numSolutions)
+
+	//numWaysExtended shows all de paths too.
+	solutions := numWaysExtended(n, jumpsAllowed)
+	fmt.Println("solutions:")
+	for _, solution := range solutions {
+		fmt.Println(solution)
+	}
 }
 
 func numWays(n int, x []int) int {
@@ -17,11 +30,8 @@ func up(n int, x []int, level int) int {
 	for _, steps := range x {
 		if level+steps == n {
 			solutions++
-			continue
-		}
-		if level+steps < n {
+		} else if level+steps < n {
 			solutions += up(n, x, level+steps)
-			continue
 		}
 	}
 	return solutions
