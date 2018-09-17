@@ -5,8 +5,8 @@ import (
 )
 
 func main() {
-	n := 5
-	jumpsAllowed := []int{1, 3, 5}
+	n := 14
+	jumpsAllowed := []int{2, 3}
 
 	//numWays is the original solution of the problem, wich returns only the number of ways to reach the top.
 	numSolutions := numWays(n, jumpsAllowed)
@@ -25,7 +25,8 @@ func main() {
 }
 
 func numWays(n int, x []int) int {
-	return up(n, x, 0)
+	validatePositives(n, x)
+	return up(n, removeRepetead(x), 0)
 }
 
 func up(n int, x []int, level int) int {
@@ -41,7 +42,8 @@ func up(n int, x []int, level int) int {
 }
 
 func numWaysExtended(n int, x []int) [][]int {
-	return upExtended(n, x, 0, []int{})
+	validatePositives(n, x)
+	return upExtended(n, removeRepetead(x), 0, []int{})
 }
 
 func upExtended(n int, x []int, level int, made []int) [][]int {
@@ -51,6 +53,8 @@ func upExtended(n int, x []int, level int, made []int) [][]int {
 			solutions = append(solutions, append(made, steps))
 		} else if level+steps < n {
 			solutions = append(solutions, upExtended(n, x, level+steps, append(made, steps))...)
+		} else {
+			fmt.Println("ops")
 		}
 	}
 	return solutions
