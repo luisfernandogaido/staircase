@@ -14,9 +14,13 @@ func main() {
 
 	//numWaysExtended shows all the paths too.
 	solutions := numWaysExtended(n, jumpsAllowed)
-	fmt.Println("solutions:")
+	fmt.Println("solutions:", len(solutions))
 	for _, solution := range solutions {
-		fmt.Println(solution)
+		sum := 0
+		for _, step := range solution {
+			sum += step
+		}
+		fmt.Printf("%v: %v\n", solution, sum)
 	}
 }
 
