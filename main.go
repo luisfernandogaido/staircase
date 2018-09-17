@@ -9,11 +9,11 @@ func main() {
 	n := 5
 	jumpsAllowed := []int{1, 3, 5}
 
-	//numWays is the original solution od the problem, wich returns only the number of ways to reach the top.
+	//numWays is the original solution of the problem, wich returns only the number of ways to reach the top.
 	numSolutions := numWays(n, jumpsAllowed)
 	fmt.Printf("number of solutions: %v\n", numSolutions)
 
-	//numWaysExtended shows all de paths too.
+	//numWaysExtended shows all the paths too.
 	solutions := numWaysExtended(n, jumpsAllowed)
 	fmt.Println("solutions:")
 	for _, solution := range solutions {
