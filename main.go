@@ -13,7 +13,7 @@ func main() {
 		jumpsAllowedStr string
 	)
 	flag.IntVar(&n, "n", 4, "Total steps")
-	flag.StringVar(&jumpsAllowedStr, "j", "1,3,5", "Jumps allowed separated by comma")
+	flag.StringVar(&jumpsAllowedStr, "j", "1,3,5", "Steps allowed separated by comma")
 	flag.Parse()
 	jumpsAllowed := make([]int, 0)
 	jumps := strings.Split(jumpsAllowedStr, ",")
