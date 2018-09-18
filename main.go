@@ -44,17 +44,17 @@ func numWays(n int, x []int) [][]int {
 }
 
 func up(n int, x []int, level int, made []int) [][]int {
-	sols := make([][]int, 0)
+	solutions := make([][]int, 0)
 	for _, steps := range x {
 		if level+steps == n {
 			m := make([]int, len(made))
 			copy(m, made)
-			sols = append(sols, append(m, steps))
+			solutions = append(solutions, append(m, steps))
 		} else if level+steps < n {
-			sols = append(sols, up(n, x, level+steps, append(made, steps))...)
+			solutions = append(solutions, up(n, x, level+steps, append(made, steps))...)
 		}
 	}
-	return sols
+	return solutions
 }
 
 func removeRepetead(s []int) []int {
