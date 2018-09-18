@@ -37,27 +37,23 @@ func main() {
 	}
 }
 
+var solutions = make([][]int, 0)
+
 func numWays(n int, x []int) [][]int {
 	validatePositives(n, x)
 	x = removeRepetead(x)
-	return up(n, x, 0, []int{})
+	up(n, x, 0, []int{})
+	return solutions
 }
 
-func up(n int, x []int, level int, made []int) [][]int {
-	solutions := make([][]int, 0)
+func up(n int, x []int, level int, made []int) {
 	for _, steps := range x {
 		if level+steps == n {
 			solutions = append(solutions, append(made, steps))
 		} else if level+steps < n {
-			possibleSolutions := up(n, x, level+steps, append(made, steps))
-			for _, s := range possibleSolutions {
-				if sumSteps(s) == n {
-					solutions = append(solutions, s)
-				}
-			}
+			up(n, x, level+steps, append(made, steps))
 		}
 	}
-	return solutions
 }
 
 func sumSteps(steps []int) int {
@@ -89,4 +85,68 @@ func validatePositives(n int, x []int) {
 			panic("all steps must be positive integers")
 		}
 	}
+}
+
+func faca() {
+	numeros := []int{0, 1, 3, 5}
+	mapa := make(map[string]bool)
+	for _, numero1 := range numeros {
+		for _, numero2 := range numeros {
+			for _, numero3 := range numeros {
+				for _, numero4 := range numeros {
+					for _, numero5 := range numeros {
+						for _, numero6 := range numeros {
+							for _, numero7 := range numeros {
+								for _, numero8 := range numeros {
+									for _, numero9 := range numeros {
+										for _, numero10 := range numeros {
+											if numero1+numero2+numero3+numero4+numero5+
+												numero6+numero7+numero8+numero9+numero10 == 10 {
+												chave := make([]string, 0)
+												if numero1 != 0 {
+													chave = append(chave, strconv.Itoa(numero1))
+												}
+												if numero2 != 0 {
+													chave = append(chave, strconv.Itoa(numero2))
+												}
+												if numero3 != 0 {
+													chave = append(chave, strconv.Itoa(numero3))
+												}
+												if numero4 != 0 {
+													chave = append(chave, strconv.Itoa(numero4))
+												}
+												if numero5 != 0 {
+													chave = append(chave, strconv.Itoa(numero5))
+												}
+												if numero6 != 0 {
+													chave = append(chave, strconv.Itoa(numero6))
+												}
+												if numero7 != 0 {
+													chave = append(chave, strconv.Itoa(numero7))
+												}
+												if numero8 != 0 {
+													chave = append(chave, strconv.Itoa(numero8))
+												}
+												if numero9 != 0 {
+													chave = append(chave, strconv.Itoa(numero9))
+												}
+												if numero10 != 0 {
+													chave = append(chave, strconv.Itoa(numero10))
+												}
+												mapa[strings.Join(chave, " ")] = true
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	for k := range mapa {
+		fmt.Println("[" + k + "]")
+	}
+	fmt.Println(len(mapa))
 }
