@@ -19,4 +19,4 @@ You can accelerate the results trying something like this:
 staircase -n 20 -j 1,2,4 > out.txt
 ```
 
-This solution is not the most elegant, however it shows the paths and is interesting.
+This solution, unlike the original, presents the possible paths. It is interesting to visualize them.
