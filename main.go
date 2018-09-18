@@ -49,8 +49,7 @@ func up(n int, x []int, level int, made []int) [][]int {
 		if level+steps == n {
 			m := make([]int, len(made))
 			copy(m, made)
-			m = append(m, steps)
-			sols = append(sols, m)
+			sols = append(sols, append(m, steps))
 		} else if level+steps < n {
 			sols = append(sols, up(n, x, level+steps, append(made, steps))...)
 		}
