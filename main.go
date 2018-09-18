@@ -9,14 +9,14 @@ import (
 
 func main() {
 	var (
-		n               int
-		jumpsAllowedStr string
+		n int
+		j string
 	)
 	flag.IntVar(&n, "n", 4, "Total steps")
-	flag.StringVar(&jumpsAllowedStr, "j", "1,3,5", "Steps allowed separated by comma")
+	flag.StringVar(&j, "j", "1,3,5", "Steps allowed separated by comma")
 	flag.Parse()
 	jumpsAllowed := make([]int, 0)
-	jumps := strings.Split(jumpsAllowedStr, ",")
+	jumps := strings.Split(j, ",")
 	for _, j := range jumps {
 		ja, err := strconv.Atoi(j)
 		if err != nil {
